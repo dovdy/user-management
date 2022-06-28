@@ -20,6 +20,11 @@ class UserPresenter extends Presenter
     public function avatar()
     {
         if (! $this->model->avatar) {
+            if ($this->model->gender == 'male') {
+                return url('assets/img/male.png');
+            } else if ($this->model->gender == 'female') {
+                return url('assets/img/female.png');
+            }
             return url('assets/img/profile.png');
         }
 

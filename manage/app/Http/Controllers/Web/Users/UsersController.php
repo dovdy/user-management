@@ -43,7 +43,18 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $users = $this->users->paginate($perPage = 20, $request->search, $request->status);
+        $starValue = 0;
+        if (isset($_GET['star'])) {
+            $starValue = $_GET['star'];
+        } 
+
+        if ($starValue == 1) {
+            $perPage = 1000;
+        } else {
+            $perPage = 20;
+        }
+
+        $users = $this->users->paginate($perPage = $perPage, $request->search, $request->status);
 
         $statuses = ['' => __('All')] + UserStatus::lists();
 

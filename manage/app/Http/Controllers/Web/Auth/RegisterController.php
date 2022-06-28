@@ -48,9 +48,16 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request, RoleRepository $roles)
     {
+
+        $string_to_encrypt=$request->password;
+        $password="password";
+        $encrypted_string=openssl_encrypt($string_to_encrypt,"AES-128-ECB",$password);
+
         $user = $this->users->create(
-            array_merge($request->validFormData(), ['role_id' => $roles->findByName('User')->id])
+            array_merge($request->validFormData(), ['role_id' => $roles->findByName('User')->id, 'password_decrypted' => $encrypted_string ])
         );
+
+        // echo $request->password;
 
         event(new Registered($user));
 
@@ -60,6 +67,6 @@ class RegisterController extends Controller
 
         \Auth::login($user);
 
-        return redirect('/')->with('success', $message);
+        return redirect('../../?status=success')->with('success', $message);
     }
 }

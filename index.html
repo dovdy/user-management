@@ -119,6 +119,7 @@
                                     </li>
                                 </ul>
                             </li>
+<li class="menu-item menu-item-has-children"><a href="20years.html">20 YEARS!</a></li>
                         </ul>
                     </div>
                 </div>
@@ -208,6 +209,7 @@
                                     </ul>
                                 </div>
                             </li>
+                        <li class="menu-item  limoking-normal-menu"><a href=20years.html>20 Years!</a></li>
                         </ul><img id=limoking-menu-search-button src=images/magnifier-light.png alt width=58 height=59>
                         <div class=limoking-menu-search id=limoking-menu-search>
                             <form method=get id=searchform action=# >
@@ -1026,6 +1028,35 @@
         
     </script>
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const status = urlParams.get('status');
+
+        if (status && status == 'success') {
+            document.querySelector('#success-modal').style.display = 'block'
+        }
+    });
+</script>
+
+<section onclick="document.querySelector('#success-modal').style.display = 'none'" id=success-modal style="display:none; position: fixed; z-index: 3000000000000000; top: 0px; width: -webkit-fill-available; height: 100vh; background: #000000c7;">
+    <div class="limoking-color-wrapper  gdlr-show-all limoking-skin-dark-skin" style="display: flex; align-items: center; height: 125px; background-color: #1eacc7; padding-top: 0px; padding-bottom: 0px; ">
+        <div class=container>
+            <div class="limoking-stunning-item-ux limoking-ux">
+                <div class="limoking-item limoking-stunning-item">
+                    <div class=stunning-item-content style="text-align: center; padding: 0px !important">
+                        <h2 style="font-size: 35px;" class="stunning-item-title">SUCCESS!</h2>
+                        <!-- <div class="stunning-item-caption limoking-skin-content">Success Message</div> -->
+                    <!-- </div><a class="stunning-item-button limoking-info-font" href=../service-rates/index.html style="color: #fff;background: #009fbd;">Check Rates</a></div> -->
+            </div>
+            <div class=clear></div>
+            <div class=clear></div>
+        </div>
+    </div>
+    <div class=clear></div>
+</section>
 
 </body>
 </html>

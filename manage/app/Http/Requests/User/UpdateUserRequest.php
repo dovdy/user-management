@@ -25,7 +25,7 @@ class UpdateUserRequest extends Request
             'birthday' => 'nullable|date',
             'role_id' => 'exists:roles,id',
             'country_id' => 'exists:countries,id',
-            'status' => Rule::in(array_keys(UserStatus::lists()))
+            'status' => Rule::in(array_keys(UserStatus::lists())),
         ];
     }
 }

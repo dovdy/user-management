@@ -18,7 +18,7 @@
 
         <form action="" method="GET" id="users-form" class="pb-2 mb-3 border-bottom-light">
             <div class="row my-3 flex-md-row flex-column-reverse">
-                <div class="col-md-4 mt-md-0 mt-2">
+                <div class="col-md-2 mt-md-0 mt-2">
                     <div class="input-group custom-search-form">
                         <input type="text"
                                class="form-control input-solid"
@@ -52,6 +52,15 @@
                     !!}
                 </div>
 
+                <div class="col-md-1 mt-2 mt-md-0">
+                <img class="star" id="starSwitchId" onclick="starSwitch(this)" data-star="0" width="40" src="assets/img/star0.png" />
+                </div>
+
+                <div class="col-md-1 mt-2 mt-md-0">
+                    <a href="users/export/0?username=1&email=1&password=1" class="btn btn-primary btn-rounded">Export</a>
+                <!-- <img class="star" id="starSwitchId" onclick="starSwitch(this)" data-star="0" width="40" src="assets/img/star0.png" /> -->
+                </div>
+
                 <div class="col-md-6">
                     <a href="{{ route('users.create') }}" class="btn btn-primary btn-rounded float-right">
                         <i class="fas fa-plus mr-2"></i>
@@ -66,18 +75,32 @@
                 <thead>
                 <tr>
                     <th></th>
+                    <th></th>
                     <th class="min-width-80">@lang('Username')</th>
                     <th class="min-width-150">@lang('Full Name')</th>
                     <th class="min-width-100">@lang('Email')</th>
+                    <th class="min-width-100">@lang('Phone')</th>
                     <th class="min-width-80">@lang('Registration Date')</th>
                     <th class="min-width-80">@lang('Status')</th>
                     <th class="text-center min-width-150">@lang('Action')</th>
                 </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                        $starValue = 0;
+                        if (isset($_GET['star'])) {
+                            $starValue = $_GET['star'];
+                        } 
+                    ?>
                     @if (count($users))
                         @foreach ($users as $user)
-                            @include('user.partials.row')
+                            @if ($starValue == 1)
+                                @if ($user->star == 1)
+                                    @include('user.partials.row')
+                                @endif
+                            @else
+                                @include('user.partials.row')
+                            @endif                            
                         @endforeach
                     @else
                         <tr>

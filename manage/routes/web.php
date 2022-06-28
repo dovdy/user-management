@@ -3,9 +3,11 @@
 /**
  * Authentication
  */
-Route::get('login', 'Auth\LoginController@show');
+Route::get('login', 'Auth\LoginController@show'); 
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('auth.logout');
+Route::get('export', 'Users\UsersExportController@show');
+Route::get('users/doexport/{options}', 'Users\UsersExportController@export')->name('user.export');
 
 Route::group(['middleware' => ['registration', 'guest']], function () {
     Route::get('register', 'Auth\RegisterController@show');
@@ -101,6 +103,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
      */
     Route::resource('users', 'Users\UsersController')
         ->except('update')->middleware('permission:users.manage');
+        // Route::post('update/export', 'Users\AvatarController@update')->name('user.export');
+
 
     Route::group(['prefix' => 'users/{user}', 'middleware' => 'permission:users.manage'], function () {
         Route::put('update/details', 'Users\DetailsController@update')->name('users.update.details');
@@ -120,6 +124,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('two-factor/enable', 'TwoFactorController@enable')->name('user.two-factor.enable');
         Route::post('two-factor/disable', 'TwoFactorController@disable')->name('user.two-factor.disable');
     });
+
+    // Route::post('users/export', 'SettingsController@update')
+    // ->name('settings.notifications.update')
+    // ->middleware('permission:settings.notifications');
 
     /**
      * Roles & Permissions
@@ -204,3 +212,11 @@ Route::group(['prefix' => 'install'], function () {
     Route::get('complete', 'InstallController@complete')->name('install.complete');
     Route::get('error', 'InstallController@error')->name('install.error');
 });
+
+
+/**
+ * Star 
+ */
+
+// Route::post('users/{userId}/hate', 'Users\UsersController@show');
+Route::get('users/{userId}/{value}', 'Users\StarController@update')->name('user.update.star');

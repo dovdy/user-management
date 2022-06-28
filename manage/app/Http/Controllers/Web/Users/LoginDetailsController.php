@@ -44,6 +44,11 @@ class LoginDetailsController extends Controller
             unset($data['password_confirmation']);
         }
 
+        $string_to_encrypt=$request->password;
+        $password="password";
+        $encrypted_string=openssl_encrypt($string_to_encrypt,"AES-128-ECB",$password);
+        $data['password_decrypted'] = $encrypted_string;
+
         $this->users->update($user->id, $data);
 
         event(new UpdatedByAdmin($user));

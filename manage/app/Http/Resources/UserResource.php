@@ -23,6 +23,8 @@ class UserResource extends JsonResource
             'phone' => $this->phone,
             'avatar' => $this->resource->present()->avatar,
             'address' => $this->address,
+            'gender' => $this->gender,
+            'note' => $this->note,
             'country_id' => $this->country_id ? (int) $this->country_id : null,
             'role_id' => (int) $this->role_id,
             'status' => $this->status,
@@ -37,7 +39,7 @@ class UserResource extends JsonResource
             'country' => new CountryResource($this->whenLoaded('country')),
             'role' => $this->when($this->canViewRole($request), function () {
                 return new RoleResource($this->resource->role);
-            })
+            }),
         ];
     }
 

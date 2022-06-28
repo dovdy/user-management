@@ -4,12 +4,12 @@
 @section('page-heading', $user->present()->nameOrEmail)
 
 @section('breadcrumbs')
-    <li class="breadcrumb-item">
-        <a href="{{ route('users.index') }}">@lang('Users')</a>
-    </li>
-    <li class="breadcrumb-item active">
-        {{ $user->present()->nameOrEmail }}
-    </li>
+<li class="breadcrumb-item">
+    <a href="{{ route('users.index') }}">@lang('Users')</a>
+</li>
+<li class="breadcrumb-item active">
+    {{ $user->present()->nameOrEmail }}
+</li>
 @stop
 
 @section('content')
@@ -21,35 +21,26 @@
                 @lang('Details')
 
                 <small>
-                    @canBeImpersonated($user)
-                    <a href="{{ route('impersonate', $user) }}"
-                       data-toggle="tooltip"
-                       data-placement="top"
-                       title="@lang('Impersonate User')">
+                    <!-- @canBeImpersonated($user)
+                    <a href="{{ route('impersonate', $user) }}" data-toggle="tooltip" data-placement="top" title="@lang('Impersonate User')">
                         @lang('Impersonate')
                     </a>
                     <span class="text-muted">|</span>
-                    @endCanBeImpersonated
+                    @endCanBeImpersonated -->
 
-                    <a href="{{ route('users.edit', $user) }}"
-                       class="edit"
-                       data-toggle="tooltip"
-                       data-placement="top"
-                       title="@lang('Edit User')">
+                    <a href="{{ route('users.edit', $user) }}" class="edit" data-toggle="tooltip" data-placement="top" title="@lang('Edit User')">
                         @lang('Edit')
                     </a>
                 </small>
             </h6>
             <div class="card-body">
-               <div class="d-flex align-items-center flex-column pt-3">
+                <div class="d-flex align-items-center flex-column pt-3">
                     <div>
-                        <img class="rounded-circle img-thumbnail img-responsive mb-4"
-                             width="130"
-                             height="130" src="{{ $user->present()->avatar }}">
+                        <img class="rounded-circle img-thumbnail img-responsive mb-4" width="130" height="130" src="{{ $user->present()->avatar }}">
                     </div>
 
                     @if ($name = $user->present()->name)
-                        <h5>{{ $user->present()->name }}</h5>
+                    <h5>{{ $user->present()->name }}</h5>
                     @endif
 
                     <a href="mailto:{{ $user->email }}" class="text-muted font-weight-light mb-2">
@@ -59,10 +50,10 @@
 
                 <ul class="list-group list-group-flush mt-3">
                     @if ($user->phone)
-                        <li class="list-group-item">
-                            <strong>@lang('Phone'):</strong>
-                            <a href="telto:{{ $user->phone }}">{{ $user->phone }}</a>
-                        </li>
+                    <li class="list-group-item">
+                        <strong>@lang('Phone'):</strong>
+                        <a href="telto:{{ $user->phone }}">{{ $user->phone }}</a>
+                    </li>
                     @endif
                     <li class="list-group-item">
                         <strong>@lang('Birthday'):</strong>
@@ -76,15 +67,45 @@
                         <strong>@lang('Last Logged In'):</strong>
                         {{ $user->present()->lastLogin }}
                     </li>
+                    <li class="list-group-item">
+                        <strong>@lang('Registered At'):</strong>
+                        {{ $user->present()->created_at }}
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    @if (isset($activities))
-        <div class="col-lg-7 col-xl-8">
-            @include("user-activity::recent-activity", ['activities' => $activities])
+
+    <div class="col-lg-7 col-xl-8">
+        <div class="card">
+            <h6 class="card-header d-flex align-items-center justify-content-between">Personal Note
+                <small>
+                    <a href="{{ $user->present()->id }}/edit" class="edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Complete Activity Log">
+                        Edit </a>
+                </small>
+            </h6>
+
+            <div class="card-body">
+                <table class="table table-borderless table-striped">
+                    <tbody>
+                        <tr>
+                            <td>
+                                @if ($user->present()->note)
+                                {{ $user->present()->note }}
+                                @else
+                                ( Empty )
+                                @endif
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    @endif
+        <!-- @if (isset($activities))
+        @include("user-activity::recent-activity", ['activities' => $activities])
+        @endif -->
+    </div>
+
 </div>
 @stop
