@@ -8,7 +8,7 @@
            value="{{ $edit ? $user->email : '' }}">
 </div>
 
-<div class="form-group">
+<div class="form-group" style="display: none;">
     <label for="username">@lang('Username')</label>
     <input type="text"
            class="form-control input-solid"
@@ -27,6 +27,7 @@
            @if ($edit) placeholder="@lang("Leave field blank if you don't want to change it")" @endif>
 </div>
 
+@if (!$edit)
 <div class="form-group">
     <label for="password_confirmation">{{ $edit ? __("Confirm New Password") : __('Confirm Password') }}</label>
     <input type="password"
@@ -35,6 +36,7 @@
            name="password_confirmation"
            @if ($edit) placeholder="@lang("Leave field blank if you don't want to change it")" @endif>
 </div>
+@endif
 
 @if ($edit)
     <button type="submit" class="btn btn-primary mt-2" id="update-login-details-btn">

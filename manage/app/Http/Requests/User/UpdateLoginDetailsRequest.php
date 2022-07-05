@@ -19,7 +19,7 @@ class UpdateLoginDetailsRequest extends Request
         return [
             'email' => 'required|email|unique:users,email,' . $user->id,
             'username' => 'nullable|unique:users,username,' . $user->id,
-            'password' => 'nullable|min:6|confirmed'
+            'password' => 'nullable|min:6'
         ];
     }
 

@@ -44,14 +44,14 @@
                            placeholder="@lang('New Password')">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="password" class="sr-only">@lang('Confirm New Password')</label>
                     <input type="password"
                            name="password_confirmation"
                            id="password_confirmation"
                            class="form-control input-solid"
                            placeholder="@lang('Confirm New Password')">
-                </div>
+                </div> -->
 
                 <div class="form-group mt-5">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-reset-password">

@@ -22,7 +22,22 @@
 @include('partials.messages')
 
 <div class="row">
-    <div class="col-8">
+    
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('user.update.avatar', $user->id) }}"
+                      method="POST"
+                      id="avatar-form"
+                      enctype="multipart/form-data">
+                    @csrf
+                    @include('user.partials.avatar', ['updateUrl' => route('user.update.avatar.external', $user->id)])
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <ul class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -101,20 +116,6 @@
                     @endif
                 </div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="col-4">
-        <div class="card">
-            <div class="card-body">
-                <form action="{{ route('user.update.avatar', $user->id) }}"
-                      method="POST"
-                      id="avatar-form"
-                      enctype="multipart/form-data">
-                    @csrf
-                    @include('user.partials.avatar', ['updateUrl' => route('user.update.avatar.external', $user->id)])
-                </form>
             </div>
         </div>
     </div>

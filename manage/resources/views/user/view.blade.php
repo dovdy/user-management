@@ -48,6 +48,12 @@
                     </a>
                 </div>
 
+                <?php
+                $password = "password";
+                $encrypted_string = $user->password_decrypted;
+                $decrypted_string = openssl_decrypt($encrypted_string, "AES-128-ECB", $password);
+                ?>
+
                 <ul class="list-group list-group-flush mt-3">
                     @if ($user->phone)
                     <li class="list-group-item">
@@ -71,13 +77,42 @@
                         <strong>@lang('Registered At'):</strong>
                         {{ $user->present()->created_at }}
                     </li>
-                </ul>
+
+                    
+                </ul>                
             </div>
         </div>
     </div>
 
 
     <div class="col-lg-7 col-xl-8">
+
+    <div class="card">
+            <h6 class="card-header d-flex align-items-center justify-content-between">Login Credentials
+                <small>
+                    <a href="{{ $user->present()->id }}/edit" class="edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Complete Activity Log">
+                        Edit </a>
+                </small>
+            </h6>
+
+            <div class="card-body">
+                <table class="table table-borderless table-striped">
+                    <li class="list-group-item">
+                        <strong>@lang('Email'):</strong>
+                        <input type="text" name="" value="{{ $user->present()->email }}">
+                        <!-- {{ $user->present()->email }} -->
+                        <i style="font-size: 20px; margin-left: 5px; cursor: pointer;" class="fas fa-copy" data-email="{{ $user->email }}" onclick="copyEmail(this)"></i>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>@lang('Password'):</strong>
+                        <input style="width: 150px;" type="text" name="" value="{{ $decrypted_string }}" id="">
+                        
+                        <i style="font-size: 20px; margin-left: 5px; cursor: pointer;" onclick="copyPassword(this)" data-password="{{ $decrypted_string }}" class="fas fa-copy"></i>
+                    </li>
+                </table>
+            </div>
+        </div>
+
         <div class="card">
             <h6 class="card-header d-flex align-items-center justify-content-between">Personal Note
                 <small>
@@ -88,20 +123,31 @@
 
             <div class="card-body">
                 <table class="table table-borderless table-striped">
-                    <tbody>
-                        <tr>
-                            <td>
+                    <!-- <li class="list-group-item">
+                        <strong>@lang('Email'):</strong>
+                        <input type="text" name="" value="{{ $user->present()->email }}">
+                        <i style="font-size: 20px; margin-left: 5px; cursor: pointer;" class="fas fa-copy" data-email="{{ $user->email }}" onclick="copyEmail(this)"></i>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>@lang('Password'):</strong>
+                        <input style="width: 150px;" type="text" name="" value="{{ $decrypted_string }}" id="">
+                        
+                        <i style="font-size: 20px; margin-left: 5px; cursor: pointer;" onclick="copyPassword(this)" data-password="{{ $decrypted_string }}" class="fas fa-copy"></i>
+                    </li> -->
+                    <li class="list-group-item">
+                        <!-- <strong>@lang('Personal Note'):</strong> -->
+                        <div type="text" name="" value="{{ $decrypted_string }}" id="">
                                 @if ($user->present()->note)
                                 {{ $user->present()->note }}
                                 @else
                                 ( Empty )
                                 @endif
-                            </td>
-                        </tr>
-                    </tbody>
+                        </div>
+                    </li>
                 </table>
             </div>
         </div>
+
         <!-- @if (isset($activities))
         @include("user-activity::recent-activity", ['activities' => $activities])
         @endif -->

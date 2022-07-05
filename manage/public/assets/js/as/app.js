@@ -46,3 +46,15 @@ as.init = function () {
 as.updateSidebarSize();
 
 $(document).ready(as.init);
+
+
+function copyPassword(element) {
+    var copyText = element.attributes['data-password'].value;
+    navigator.clipboard.writeText(copyText);
+    swal("Success!", "Password has been copied to clipboard!", "success");
+}
+function copyEmail(element) {
+    var copyText = element.attributes['data-email'].value;
+    navigator.clipboard.writeText(copyText);
+    swal("Success!", "Email has been copied to clipboard!", "success");
+}

@@ -158,9 +158,12 @@ class UsersExportController extends ApiController
         $table_head = array(
             'id',
             'email',
+            'first_name', 
+            'last_name',
             'password',
             'phone',
             'gender',
+            'birthday',
             'note'
         );
 
@@ -172,9 +175,9 @@ class UsersExportController extends ApiController
         // $tables_sql = "id , email";
         // $query = "SELECT `{$tables_sql}` from users";
         if (isset($_GET['star']) && $_GET['star'] == 1) {
-            $query = "SELECT id, email, password_decrypted, phone, gender, note from users WHERE star = 1";
+            $query = "SELECT id, email, first_name, last_name, password_decrypted, phone, gender, birthday, note from users WHERE star = 1";
         } else {
-            $query = "SELECT id, email, password_decrypted, phone, gender, note from users";
+            $query = "SELECT id, email, first_name, last_name, password_decrypted, phone, gender, birthday, note from users";
         }
         $result = mysqli_query($con, $query);
         while ($row = mysqli_fetch_assoc($result)) {

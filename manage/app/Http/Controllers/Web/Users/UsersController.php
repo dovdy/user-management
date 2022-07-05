@@ -43,7 +43,7 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $starValue = 0;
+        $starValue = 0; 
         if (isset($_GET['star'])) {
             $starValue = $_GET['star'];
         } 
