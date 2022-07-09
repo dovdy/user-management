@@ -247,12 +247,12 @@
         </div>
     </div>
 
-    <div class="text-center text-muted">
+    <!-- <div class="text-center text-muted">
         @if (setting('reg_enabled'))
         @lang('Already have an account?')
         <a class="font-weight-bold" href="<?= url("login") ?>">@lang('Login')</a>
         @endif
-    </div>
+    </div> -->
 
 </div>
 
