@@ -72,12 +72,12 @@
         </div>
     </div>
 
-    <div class="text-center text-muted">
+    <!-- <div class="text-center text-muted">
         @if (setting('reg_enabled'))
             @lang("Don't have an account?")
             <a class="font-weight-bold" href="<?= url("register") ?>">@lang('Sign Up')</a>
         @endif
-    </div>
+    </div> -->
 </div>
 
 @stop

@@ -31,12 +31,15 @@
             @foreach (\Vanguard\Plugins\Vanguard::availablePlugins() as $plugin)
                 @include('partials.sidebar.items', ['item' => $plugin->sidebar()])
             @endforeach
-            <li class="nav-item">
+
+            @if (auth()->user()->role_id == 1)
+            <li class="nav-item"> 
                 <a class="nav-link " href="export">
                     <i class="fas fa-share"></i>
                     <span>Export</span>
                 </a>
             </li>
+            @endif
         </ul>
     </div>
 </nav>

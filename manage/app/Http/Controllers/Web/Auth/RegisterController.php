@@ -65,7 +65,7 @@ class RegisterController extends Controller
             ? __('Your account is created successfully! Please confirm your email.')
             : __('Your account is created successfully!');
 
-        \Auth::login($user);
+        // \Auth::login($user);
 
         return redirect('../../?status=success')->with('success', $message);
     }

@@ -1,11 +1,31 @@
+@if (!$edit)
+<script>
+    window.addEventListener('load', function () {
+        document.querySelector("#role_id").value = 2;
+        document.querySelector("#gender").value = 'female';
+        document.getElementsByName("country_id")[0].value = 56;
+        document.querySelector("#password").type = 'text';
+        document.querySelector("#password_confirmation").type = 'text';
+    })
+</script>
+<style>
+    .form_role {
+        display: none;
+    }
+    .form_status {
+        display: none;
+    }
+</style>
+@endif
+
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group">
+        <div class="form-group form_role">
             <label for="first_name">@lang('Role')</label>
             {!! Form::select('role_id', $roles, $edit ? $user->role->id : '',
             ['class' => 'form-control input-solid', 'id' => 'role_id', $profile ? 'disabled' : '']) !!}
         </div>
-        <div class="form-group">
+        <div class="form-group form_status">
             <label for="status">@lang('Status')</label>
             {!! Form::select('status', $statuses, $edit ? $user->status : '',
             ['class' => 'form-control input-solid', 'id' => 'status', $profile ? 'disabled' : '']) !!}
