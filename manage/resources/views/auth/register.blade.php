@@ -260,7 +260,12 @@
         </div>
     </div>
 
-
+    <!-- <div class="text-center text-muted">
+        @if (setting('reg_enabled'))
+        @lang('Already have an account?')
+        <a class="font-weight-bold" href="">@lang('Login')</a>
+        @endif
+    </div> -->
 
 </div>
 
