@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             //nationalMode: false,
             // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
             placeholderNumberType: "MOBILE",
-            preferredCountries: ['nl', 'be'],
+            preferredCountries: ['be', 'nl'],
             // separateDialCode: true,
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.2/build/js/utils.js",
         });
@@ -97,6 +97,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         validMsg.classList.add("hide");
     };
     $(document).ready(function() {
-        $("#phone").val("+31");
+        $("#phone").val("+32");
     });
 });
