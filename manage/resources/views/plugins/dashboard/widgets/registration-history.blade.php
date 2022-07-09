@@ -1,6 +1,6 @@
 <div class="card">
     <h6 class="card-header">
-        @lang('Registration History')
+        @lang('Registratie Geschiedenis')
     </h6>
 
     <div class="card-body">

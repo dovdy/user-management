@@ -5,7 +5,7 @@
                 <div class="icon my-3">
                     <i class="fas fa-user fa-2x"></i>
                 </div>
-                <p class="lead mb-0">@lang('Update Profile')</p>
+                <p class="lead mb-0">@lang('Profiel bijwerken')</p>
             </a>
         </div>
     </div>
@@ -19,7 +19,7 @@
                     <div class="icon my-3">
                         <i class="fa fa-list fa-2x"></i>
                     </div>
-                    <p class="lead mb-0">@lang('My Sessions')</p>
+                    <p class="lead mb-0">@lang('Mijn Sessies')</p>
                 </a>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="icon my-3">
                     <i class="fas fa-server fa-2x"></i>
                 </div>
-                <p class="lead mb-0">@lang('Activity Log')</p>
+                <p class="lead mb-0">@lang('Logboek')</p>
             </a>
         </div>
     </div>
@@ -46,7 +46,7 @@
                 <div class="icon my-3">
                     <i class="fas fa-sign-out-alt fa-2x"></i>
                 </div>
-                <p class="lead mb-0">@lang('Logout')</p>
+                <p class="lead mb-0">@lang('Uitloggen')</p>
             </a>
         </div>
     </div>

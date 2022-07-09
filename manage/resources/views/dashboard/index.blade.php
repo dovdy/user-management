@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', __('Dashboard'))
+@section('page-title', __('Home'))
 @section('page-heading', __('Dashboard'))
 
 @section('breadcrumbs')

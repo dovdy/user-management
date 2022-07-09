@@ -1,10 +1,10 @@
 <div class="card overflow-hidden">
     <h6 class="card-header d-flex align-items-center justify-content-between">
-        @lang('Latest Registrations')
+        @lang('Nieuwe gebruikers')
 
         @if (count($latestRegistrations))
             <small class="float-right">
-                <a href="{{ route('users.index') }}">@lang('View All')</a>
+                <a href="{{ route('users.index') }}">@lang('Bekijk allemaal')</a>
             </small>
         @endif
     </h6>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', __('Add User'))
+@section('page-title', __('Gebruiker toevoegen'))
 @section('page-heading', __('Create New User'))
 
 @section('breadcrumbs')
@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col-md-3">
                     <h5 class="card-title">
-                        @lang('User Details')
+                        @lang('Persoon Gegevens')
                     </h5>
                     <p class="text-muted font-weight-light">
-                        @lang('A general user profile information.')
+                        
                     </p>
                 </div>
                 <div class="col-md-9">
@@ -40,10 +40,10 @@
             <div class="row">
                 <div class="col-md-3">
                     <h5 class="card-title">
-                        @lang('Login Details')
+                        @lang('Primair Login Gegevens')
                     </h5>
                     <p class="text-muted font-weight-light">
-                        @lang('Details used for authenticating with the application.')
+                        
                     </p>
                 </div>
                 <div class="col-md-9">
@@ -56,7 +56,7 @@
     <div class="row">
         <div class="col-md-12">
             <button type="submit" class="btn btn-primary">
-                @lang('Create User')
+                @lang('Toevoegen')
             </button>
         </div>
     </div>

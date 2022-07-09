@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', __('Edit User'))
+@section('page-title', __('Gebruiker bijwerken'))
 @section('page-heading', $user->present()->nameOrEmail)
 
 @section('breadcrumbs')
@@ -49,7 +49,7 @@
                            role="tab"
                            aria-controls="home"
                            aria-selected="true">
-                            @lang('User Details')
+                            @lang('Persoon Gegevens')
                         </a>
                     </li>
                     <li class="nav-item">
@@ -60,7 +60,7 @@
                            role="tab"
                            aria-controls="home"
                            aria-selected="true">
-                            @lang('Login Details')
+                            @lang('Primair Login Gegevens')
                         </a>
                     </li>
                     @if (setting('2fa.enabled'))

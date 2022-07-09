@@ -10,7 +10,7 @@
                      <label for="switch-all_users"></label>
                  </div>
                 <div class="ml-3 d-flex flex-column">
-                    <label class="mb-0">All Users</label>
+                    <label class="mb-0">Iedereen</label>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     <label for="switch-favorites"></label>
                 </div>
                 <div class="ml-3 d-flex flex-column">
-                    <label class="mb-0">Favorites</label>
+                    <label class="mb-0">Favorieten</label>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
                                class="form-control input-solid"
                                name="search"
                                value="{{ Request::get('search') }}"
-                               placeholder="@lang('Search for users...')">
+                               placeholder="@lang('Zoek gebruiker')">
 
                             <span class="input-group-append">
                                 @if (Request::has('search') && Request::get('search') != '')
@@ -53,18 +53,18 @@
                 </div>
 
                 <div class="col-md-1 mt-2 mt-md-0">
-                <img class="star" id="starSwitchId" onclick="starSwitch(this)" data-star="0" width="40" src="assets/img/star0.png" />
+                <img class="star" id="starSwitchId" onclick="starSwitch(this)" data-star="0" width="32" src="assets/img/star0.png" />
                 </div>
 
                 <div class="col-md-1 mt-2 mt-md-0">
-                    <a href="users/export/0?username=1&email=1&password=1" class="btn btn-primary btn-rounded">Export</a>
-                <!-- <img class="star" id="starSwitchId" onclick="starSwitch(this)" data-star="0" width="40" src="assets/img/star0.png" /> -->
+                     <!-- <a href="users/export/0?username=1&email=1&password=1" class="btn btn-primary btn-rounded">Exporteren</a>-->
+                <!-- <img class="star" id="starSwitchId" onclick="starSwitch(this)" data-star="0" width="32" src="assets/img/star0.png" /> -->
                 </div>
 
                 <div class="col-md-6">
                     <a href="{{ route('users.create') }}" class="btn btn-primary btn-rounded float-right">
                         <i class="fas fa-plus mr-2"></i>
-                        @lang('Add User')
+                        @lang('Nieuwe Gebruiker')
                     </a>
                 </div>
             </div>
@@ -76,13 +76,13 @@
                 <tr>
                     <th></th>
                     <th></th>
-                    <th class="min-width-80">@lang('Username')</th>
-                    <th class="min-width-150">@lang('Full Name')</th>
-                    <th class="min-width-100">@lang('Email')</th>
-                    <th class="min-width-100">@lang('Phone')</th>
-                    <th class="min-width-80">@lang('Registration Date')</th>
+                    <th class="min-width-80">@lang('Gebruikersnaam')</th>
+                    <th class="min-width-150">@lang('Volledige Naam')</th>
+                    <th class="min-width-100">@lang('Emailadres')</th>
+                    <th class="min-width-100">@lang('Telefoonnummer')</th>
+                    <th class="min-width-80">@lang('Aangemaakt op')</th>
                     <th class="min-width-80">@lang('Status')</th>
-                    <th class="text-center min-width-150">@lang('Action')</th>
+                    <th class="text-center min-width-150">@lang('Actie')</th>
                 </tr>
                 </thead>
                 <tbody>

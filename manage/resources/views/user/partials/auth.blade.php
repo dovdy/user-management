@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="email">@lang('Email')</label>
+    <label for="email">@lang('Emailadres')</label>
     <input type="email"
            class="form-control input-solid"
            id="email"
@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group" style="display: none;">
-    <label for="username">@lang('Username')</label>
+    <label for="username">@lang('Gebruikersnaam')</label>
     <input type="text"
            class="form-control input-solid"
            id="username"
@@ -41,6 +41,6 @@
 @if ($edit)
     <button type="submit" class="btn btn-primary mt-2" id="update-login-details-btn">
         <i class="fa fa-refresh"></i>
-        @lang('Update Details')
+        @lang('Update Gegevens')
     </button>
 @endif

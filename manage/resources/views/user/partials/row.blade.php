@@ -1,5 +1,5 @@
 <tr>
-    <td style="width: 40px;">
+    <td style="width: 32px;">
         <a>
             <?php
             if ($user->present()->star == 1) {
@@ -39,7 +39,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                 <a href="{{ route('users.show', $user) }}" class="dropdown-item text-gray-500">
                     <i class="fas fa-eye mr-2"></i>
-                    @lang('View User')
+                    @lang('Bekijk Gebruiker')
                 </a>
 
                 <?php
@@ -50,12 +50,12 @@
 
                 <a href="" id="email_span" href="{{ route('users.show', $user) }}" class="dropdown-item text-gray-500" onclick="copyEmail(this)" data-email="{{ $user->email }}" data-toggle="modal" data-placement="top" data data-dismiss="modal" data-dismiss="modal" aria-label="Close">
                     <i class="fa fa-envelope mr-2"></i>
-                    @lang('Copy Email')
+                    @lang('Kopiëer Emailadres')
                 </a>
 
                 <a href="" id="password_span" href="{{ route('users.show', $user) }}" class="dropdown-item text-gray-500" onclick="copyPassword(this)" data-password="{{ $decrypted_string }}" data-toggle="modal" data-placement="top" data data-dismiss="modal" data-dismiss="modal" aria-label="Close">
                     <i class="fas fa-key mr-2"></i>
-                    @lang('Copy Password')
+                    @lang('Kopiëer Wachtwoord')
                 </a>
 
 
@@ -67,10 +67,10 @@
                 @endCanBeImpersonated
 
                 @if (config('session.driver') == 'database')
-                <a href="{{ route('user.sessions', $user) }}" class="dropdown-item text-gray-500">
+              <!--   <a href="{{ route('user.sessions', $user) }}" class="dropdown-item text-gray-500">
                     <i class="fas fa-list mr-2"></i>
                     @lang('User Sessions')
-                </a>
+                </a>-->
                 @endif
             </div>
         </div>
@@ -81,12 +81,12 @@
             function copyPassword(element) {
                 var copyText = element.attributes['data-password'].value;
                 navigator.clipboard.writeText(copyText);
-                swal("Success!", "Password has been copied to clipboard!", "success");
+                swal("Gelukt!", "Wachtwoord is kopiëerd!", "success");
             }
             function copyEmail(element) {
                 var copyText = element.attributes['data-email'].value;
                 navigator.clipboard.writeText(copyText);
-                swal("Success!", "Email has been copied to clipboard!", "success");
+                swal("Gelukt!", "Emailadres is kopiëerd!", "success");
             }
         </script>
 
@@ -102,14 +102,14 @@
                     element.attributes['data-star'].value = 0;
                     ajax_url = 'http://127.0.0.1/pruthuvi/manage/public/users/' + element.attributes['data-user-id'].value + '/0';
                     doStarAjax(ajax_url);
-                    swal("Success!", "User removed from favorites.", "success");
+                    swal("Gelukt!", "Gebruiker is verwijderd uit favorieten.", "success");
                     // alert(0);
                 } else if (element.attributes['data-star'].value == 0 || element.attributes['data-star'].value == '0') {
                     element.src = 'assets/img/star1.png';
                     element.attributes['data-star'].value = 1;
                     ajax_url = 'http://127.0.0.1/pruthuvi/manage/public/users/' + element.attributes['data-user-id'].value + '/1';
                     doStarAjax(ajax_url);
-                    swal("Success!", "User added to favorites.", "success");
+                    swal("Gelukt!", "Gebruiker is toegevoegd aan favorieten", "success");
                     // alert(1);
                 }
             }
@@ -179,7 +179,7 @@
             <i class="fas fa-edit"></i>
         </a>
 
-        <a href="{{ route('users.destroy', $user) }}" class="btn btn-icon" title="@lang('Delete User')" data-toggle="tooltip" data-placement="top" data-method="DELETE" data-confirm-title="@lang('Please Confirm')" data-confirm-text="@lang('Are you sure that you want to delete this user?')" data-confirm-delete="@lang('Yes, delete him!')">
+        <a href="{{ route('users.destroy', $user) }}" class="btn btn-icon" title="@lang('Delete User')" data-toggle="tooltip" data-placement="top" data-method="DELETE" data-confirm-title="@lang('Bevestig')" data-confirm-text="@lang('Weet je zeker dat je wilt verwijderen?')" data-confirm-delete="@lang('Ja, verwijder.')">
             <i class="fas fa-trash"></i>
         </a>
     </td>

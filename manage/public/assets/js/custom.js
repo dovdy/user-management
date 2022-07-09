@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             // localizedCountries: { 'de': 'Deutschland' },
             //nationalMode: false,
-            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            onlyCountries: ['be', 'nl'],
             placeholderNumberType: "MOBILE",
-            preferredCountries: ['nl', 'be'],
-            // separateDialCode: true,
+            preferredCountries: ['be', 'nl'],
+            separateDialCode: true,
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.2/build/js/utils.js",
         });
         $(validMsg).addClass("hide");
@@ -97,6 +97,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         validMsg.classList.add("hide");
     };
     $(document).ready(function() {
-        $("#phone").val("+31");
+        $("#phone").val("+32");
     });
 });

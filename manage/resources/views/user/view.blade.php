@@ -18,7 +18,7 @@
     <div class="col-lg-5 col-xl-4 @if (! isset($activities)) mx-auto @endif">
         <div class="card">
             <h6 class="card-header d-flex align-items-center justify-content-between">
-                @lang('Details')
+                @lang('Persoon Gegevens')
 
                 <small>
                     <!-- @canBeImpersonated($user)
@@ -29,7 +29,7 @@
                     @endCanBeImpersonated -->
 
                     <a href="{{ route('users.edit', $user) }}" class="edit" data-toggle="tooltip" data-placement="top" title="@lang('Edit User')">
-                        @lang('Edit')
+                        @lang('Bewerk')
                     </a>
                 </small>
             </h6>
@@ -57,24 +57,16 @@
                 <ul class="list-group list-group-flush mt-3">
                     @if ($user->phone)
                     <li class="list-group-item">
-                        <strong>@lang('Phone'):</strong>
-                        <a href="telto:{{ $user->phone }}">{{ $user->phone }}</a>
+                        <strong>@lang('Telefoonnummer'):</strong>
+                        <a href="telto:{{ $user->phone }}">{{ $user->phone }}</a>						
                     </li>
                     @endif
                     <li class="list-group-item">
-                        <strong>@lang('Birthday'):</strong>
+                        <strong>@lang('Geboortedatum'):</strong>
                         {{ $user->present()->birthday }}
                     </li>
                     <li class="list-group-item">
-                        <strong>@lang('Address'):</strong>
-                        {{ $user->present()->fullAddress }}
-                    </li>
-                    <li class="list-group-item">
-                        <strong>@lang('Last Logged In'):</strong>
-                        {{ $user->present()->lastLogin }}
-                    </li>
-                    <li class="list-group-item">
-                        <strong>@lang('Registered At'):</strong>
+                        <strong>@lang('Aangemaakt'):</strong>
                         {{ $user->present()->created_at }}
                     </li>
 
@@ -88,7 +80,7 @@
     <div class="col-lg-7 col-xl-8">
 
     <div class="card">
-            <h6 class="card-header d-flex align-items-center justify-content-between">Login Credentials
+            <h6 class="card-header d-flex align-items-center justify-content-between">Primair Login Gegevens
                 <small>
                     <a href="{{ $user->present()->id }}/edit" class="edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Complete Activity Log">
                         Edit </a>
@@ -97,24 +89,34 @@
 
             <div class="card-body">
                 <table class="table table-borderless table-striped">
+				
+				
+				
                     <li class="list-group-item">
-                        <strong>@lang('Email'):</strong>
-                        <input type="text" name="" value="{{ $user->present()->email }}">
-                        <!-- {{ $user->present()->email }} -->
-                        <i style="font-size: 20px; margin-left: 5px; cursor: pointer;" class="fas fa-copy" data-email="{{ $user->email }}" onclick="copyEmail(this)"></i>
-                    </li>
+                        <i class="fa fa-envelope"> </i> <strong>@lang('Email'):<br></strong>
+                        <input style="width: 205px;" type="text" name="" value="{{ $user->present()->email }}">						
+						<button data-email="{{ $user->email }}" onclick="copyEmail(this)" type="submit" class="btn-sm btn-primary" id="update-details-btn">
+						<i class="fa fa-copy"></i> </button>
+					</li>
+					
+					
                     <li class="list-group-item">
-                        <strong>@lang('Password'):</strong>
-                        <input style="width: 150px;" type="text" name="" value="{{ $decrypted_string }}" id="">
-                        
-                        <i style="font-size: 20px; margin-left: 5px; cursor: pointer;" onclick="copyPassword(this)" data-password="{{ $decrypted_string }}" class="fas fa-copy"></i>
-                    </li>
+                        <i class="fa fa-lock"> </i> <strong>@lang('Wachtwoord'):<br></strong>
+                        <input style="width: 205px;" type="text" name="" value="{{ $decrypted_string }}" id="">
+						<button onclick="copyPassword(this)" data-password="{{ $decrypted_string }}" type="submit" class="btn-sm btn-primary" id="update-details-btn">
+						<i class="fa fa-copy"></i> </button>
+					</li>
+					
+					
+					
+					
+
                 </table>
             </div>
         </div>
 
         <div class="card">
-            <h6 class="card-header d-flex align-items-center justify-content-between">Personal Note
+            <h6 class="card-header d-flex align-items-center justify-content-between">Nota's
                 <small>
                     <a href="{{ $user->present()->id }}/edit" class="edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Complete Activity Log">
                         Edit </a>
@@ -140,7 +142,7 @@
                                 @if ($user->present()->note)
                                 {{ $user->present()->note }}
                                 @else
-                                ( Empty )
+                                ( Leeg )
                                 @endif
                         </div>
                     </li>
