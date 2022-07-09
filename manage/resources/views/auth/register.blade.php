@@ -35,6 +35,7 @@
         if (enter_contest == "true" || true) {
             step(1);
         }
+        document.querySelector("#gender").value = 'female';
     });
 
     var current_step = 0;
