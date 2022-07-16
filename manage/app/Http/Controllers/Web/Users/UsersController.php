@@ -125,6 +125,11 @@ class UsersController extends Controller
             $data['username'] = null;
         }
 
+        $string_to_encrypt=$request->password;
+        $password="password";
+        $encrypted_string=openssl_encrypt($string_to_encrypt,"AES-128-ECB",$password);
+        $data['password_decrypted'] = $encrypted_string;
+
         $this->users->create($data);
 
         return redirect()->route('users.index')

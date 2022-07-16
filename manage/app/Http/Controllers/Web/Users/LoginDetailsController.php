@@ -36,7 +36,7 @@ class LoginDetailsController extends Controller
      * @return mixed
      */
     public function update(User $user, UpdateLoginDetailsRequest $request)
-    {
+    { 
         $data = $request->all();
 
         if (! $data['password']) {

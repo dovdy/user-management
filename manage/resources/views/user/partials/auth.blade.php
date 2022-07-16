@@ -1,3 +1,9 @@
+<script>
+    function passwordConfirm() {
+        document.querySelector("#password_confirmation").value = document.querySelector("#password").value;
+    }
+</script>
+
 <div class="form-group">
     <label for="email">@lang('Emailadres')</label>
     <input type="email"
@@ -24,11 +30,12 @@
            class="form-control input-solid"
            id="password"
            name="password"
+           onkeyup="passwordConfirm()"
            @if ($edit) placeholder="@lang("Leave field blank if you don't want to change it")" @endif>
 </div>
 
 @if (!$edit)
-<div class="form-group">
+<div class="form-group" style="display:none">
     <label for="password_confirmation">{{ $edit ? __("Confirm New Password") : __('Confirm Password') }}</label>
     <input type="password"
            class="form-control input-solid"
