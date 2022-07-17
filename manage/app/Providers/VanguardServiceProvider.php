@@ -4,6 +4,8 @@ namespace Vanguard\Providers;
 
 use Vanguard\Plugins\VanguardServiceProvider as BaseVanguardServiceProvider;
 use Vanguard\Support\Plugins\Dashboard\Widgets\BannedUsers;
+use Vanguard\Support\Plugins\Dashboard\Widgets\MaleUsers;
+use Vanguard\Support\Plugins\Dashboard\Widgets\FemaleUsers;
 use Vanguard\Support\Plugins\Dashboard\Widgets\LatestRegistrations;
 use Vanguard\Support\Plugins\Dashboard\Widgets\NewUsers;
 use Vanguard\Support\Plugins\Dashboard\Widgets\RegistrationHistory;
@@ -42,8 +44,10 @@ class VanguardServiceProvider extends BaseVanguardServiceProvider
             UserActions::class,
             TotalUsers::class,
             NewUsers::class,
-            BannedUsers::class,
-            UnconfirmedUsers::class,
+            // BannedUsers::class,
+            // UnconfirmedUsers::class,
+            MaleUsers::class,
+            FemaleUsers::class,
             RegistrationHistory::class,
             LatestRegistrations::class,
             ActivityWidget::class,

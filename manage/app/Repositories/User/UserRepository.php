@@ -110,6 +110,14 @@ interface UserRepository
     public function countByStatus($status);
 
     /**
+     * Number of users with provided sex.
+     *
+     * @param $sex
+     * @return mixed
+     */
+    public function countByGender($gender);
+
+    /**
      * Count of registered users for every month within the
      * provided date range.
      *

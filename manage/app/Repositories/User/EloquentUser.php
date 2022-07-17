@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace Vanguard\Repositories\User;
 
@@ -173,6 +173,14 @@ class EloquentUser implements UserRepository
     public function countByStatus($status)
     {
         return User::where('status', $status)->count();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function countByGender($gender)
+    {
+        return User::where('gender', $gender)->count();
     }
 
     /**
