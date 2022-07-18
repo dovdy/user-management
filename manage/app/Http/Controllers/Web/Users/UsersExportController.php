@@ -9,6 +9,7 @@ use Vanguard\Http\Controllers\Api\ApiController;
 use Vanguard\Repositories\User\UserRepository;
 use Vanguard\Services\Upload\UserAvatarManager;
 use Vanguard\User;
+use DB;
 
 /**
  * Class StarController
@@ -164,16 +165,13 @@ class UsersExportController extends ApiController
             'phone',
             'gender',
             'birthday',
-            'note'
+            'note',
+            'emails',
+            'passwords'
         );
 
         fputcsv($output, $table_head);
 
-        // $tables =  $email . $username . $password . $first_name . $last_name . $phone . $avatar .  $gender . $address . $country_id . $birthday . $star . $note;
-        
-        // $query = "SELECT id , `{$email}` , `{$username}` , `{$password}`  from users";
-        // $tables_sql = "id , email";
-        // $query = "SELECT `{$tables_sql}` from users";
         if (isset($_GET['star']) && $_GET['star'] == 1) {
             $query = "SELECT id, email, first_name, last_name, password_decrypted, phone, gender, birthday, note from users WHERE star = 1";
         } else {
@@ -181,6 +179,18 @@ class UsersExportController extends ApiController
         }
         $result = mysqli_query($con, $query);
         while ($row = mysqli_fetch_assoc($result)) {
+            $emails = $this->multipleEmails($row['id']);
+            $passwords = $this->multiplePasswords($row['id']);
+            $email_array = array();
+            $password_array = array();
+            foreach ($emails as $email) {
+                array_push($email_array, $email->email);
+            }
+            foreach ($passwords as $password) {
+                array_push($password_array, $password->password);
+            }
+            array_push($row, implode(', ', $email_array));
+            array_push($row, implode(', ', $password_array));
             fputcsv($output, $row);
         }
         fclose($output);
@@ -191,6 +201,18 @@ class UsersExportController extends ApiController
         return view('user/export', [
             'socialProviders' => config('users.export')
         ]);
+    }
+
+    public function multipleEmails($user_id) {
+        return DB::table('emails')
+            ->where('user_id', $user_id)
+            ->get('email');
+    }
+
+    public function multiplePasswords($user_id) {
+        return DB::table('passwords')
+            ->where('user_id', $user_id)
+            ->get('password');
     }
 }
 // https://www.cloudways.com/blog/import-export-csv-using-php-and-mysql/
