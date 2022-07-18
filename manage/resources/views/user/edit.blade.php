@@ -63,6 +63,28 @@
                             @lang('Primair Login Gegevens')
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           id="emails-tab"
+                           data-toggle="tab"
+                           href="#emails"
+                           role="tab"
+                           aria-controls="home"
+                           aria-selected="true">
+                            @lang('Extra Emails')
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           id="passwords-tab"
+                           data-toggle="tab"
+                           href="#passwords"
+                           role="tab"
+                           aria-controls="home"
+                           aria-selected="true">
+                            @lang('Extra Passwords')
+                        </a>
+                    </li>
                     @if (setting('2fa.enabled'))
                         <li class="nav-item">
                             <a class="nav-link"
@@ -103,6 +125,32 @@
                         </form>
                     </div>
 
+                    <div class="tab-pane fade px-2"
+                         id="emails"
+                         role="tabpanel"
+                         aria-labelledby="nav-profile-tab">
+                        <form action="{{ route('users.update.multiple-emails', $user) }}"
+                              method="POST"
+                              id="multiple-emails-form">
+                            @csrf
+                            @method('PUT')
+                            @include('user.partials.multiple-emails')
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade px-2"
+                         id="passwords"
+                         role="tabpanel"
+                         aria-labelledby="nav-profile-tab">
+                        <form action="{{ route('users.update.multiple-passwords', $user) }}"
+                              method="POST"
+                              id="multiple-passwords-form">
+                            @csrf
+                            @method('PUT')
+                            @include('user.partials.multiple-passwords')
+                        </form>
+                    </div>
+
                     @if (setting('2fa.enabled'))
                         <div class="tab-pane fade px-2" id="2fa" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <?php $route = Authy::isEnabled($user) ? 'disable' : 'enable'; ?>
@@ -128,6 +176,9 @@
     {!! HTML::script('assets/js/as/profile.js') !!}
     {!! JsValidator::formRequest('Vanguard\Http\Requests\User\UpdateDetailsRequest', '#details-form') !!}
     {!! JsValidator::formRequest('Vanguard\Http\Requests\User\UpdateLoginDetailsRequest', '#login-details-form') !!}
+
+    {!! JsValidator::formRequest('Vanguard\Http\Requests\User\UpdateMultipleEmailsRequest', '#multiple-emails-form') !!}
+    {!! JsValidator::formRequest('Vanguard\Http\Requests\User\UpdateMultiplePasswordsRequest', '#multiple-passwords-form') !!}
 
     @if (setting('2fa.enabled'))
         {!! JsValidator::formRequest('Vanguard\Http\Requests\TwoFactor\EnableTwoFactorRequest', '#two-factor-form') !!}

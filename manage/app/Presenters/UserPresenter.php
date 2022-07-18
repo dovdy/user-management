@@ -4,6 +4,7 @@ namespace Vanguard\Presenters;
 
 use Vanguard\Support\Enum\UserStatus;
 use Illuminate\Support\Str;
+use DB;
 
 class UserPresenter extends Presenter
 {
@@ -85,5 +86,17 @@ class UserPresenter extends Presenter
         }
 
         return $class;
+    }
+
+    public function multipleEmalis($user_id) {
+        return DB::table('emails')
+            ->where('user_id', $user_id)
+            ->get();
+    }
+
+    public function multiplePasswords($user_id) {
+        return DB::table('passwords')
+            ->where('user_id', $user_id)
+            ->get();
     }
 }

@@ -89,28 +89,30 @@
 
             <div class="card-body">
                 <table class="table table-borderless table-striped">
-				
-				
-				
                     <li class="list-group-item">
                         <i class="fa fa-envelope"> </i> <strong>@lang('Email'):<br></strong>
                         <input style="width: 205px;" type="text" name="" value="{{ $user->present()->email }}">						
 						<button data-email="{{ $user->email }}" onclick="copyEmail(this)" type="submit" class="btn-sm btn-primary" id="update-details-btn">
-						<i class="fa fa-copy"></i> </button>
+						<i class="fa fa-copy"></i> </button><br>
+
+                        @foreach($user->present()->multipleEmalis($user->present()->id) as $multipleEmail) 
+                        <input style="width: 205px;" type="text" name="" value="{{ $multipleEmail->email }}">						
+						<button data-email="{{ $multipleEmail->email }}" onclick="copyEmail(this)" type="submit" class="btn-sm btn-primary" id="update-details-btn">
+						<i class="fa fa-copy"></i> </button><br>
+                        @endforeach
 					</li>
-					
-					
                     <li class="list-group-item">
                         <i class="fa fa-lock"> </i> <strong>@lang('Wachtwoord'):<br></strong>
                         <input style="width: 205px;" type="text" name="" value="{{ $decrypted_string }}" id="">
 						<button onclick="copyPassword(this)" data-password="{{ $decrypted_string }}" type="submit" class="btn-sm btn-primary" id="update-details-btn">
-						<i class="fa fa-copy"></i> </button>
-					</li>
-					
-					
-					
-					
+						<i class="fa fa-copy"></i> </button><br>
 
+                        @foreach($user->present()->multiplePasswords($user->present()->id) as $multiplePassword)
+                        <input style="width: 205px;" type="text" name="" value="{{ $multiplePassword->password }}" id="">
+						<button onclick="copyPassword(this)" data-password="{{ $multiplePassword->password }}" type="submit" class="btn-sm btn-primary" id="update-details-btn">
+						<i class="fa fa-copy"></i> </button><br>
+                        @endforeach
+					</li>
                 </table>
             </div>
         </div>

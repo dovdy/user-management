@@ -111,6 +111,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::put('update/login-details', 'Users\LoginDetailsController@update')
             ->name('users.update.login-details');
 
+        Route::put('update/multiple-emails', 'Users\MultipleEmails@update')
+            ->name('users.update.multiple-emails');
+        Route::put('update/multiple-passwords', 'Users\MultiplePasswords@update')
+            ->name('users.update.multiple-passwords');
+
         Route::post('update/avatar', 'Users\AvatarController@update')->name('user.update.avatar');
         Route::post('update/avatar/external', 'Users\AvatarController@updateExternal')
             ->name('user.update.avatar.external');
