@@ -16,6 +16,10 @@
     .iti {
         display: block !important;
     }
+
+    #phone {
+        padding-left: 81px !important
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.2/build/js/intlTelInput.js"></script>
@@ -77,13 +81,13 @@
                     document.querySelector("#gender").classList.add('is-invalid');
                     is_required = true;
                 }
-                if (document.querySelector("#phone").value.length <= 3) {
-                    document.querySelector("#phone-error").innerHTML = 'Telefoonnummer is onjuist.';
-                    document.querySelector("#phone-error").style.display = 'block';
-                    document.querySelector("#phone").classList.add('is-invalid');
-                    is_required = true;
-                }
-                if (!is_required) {
+                // if (document.querySelector("#phone").value.length <= 3) {
+                //     document.querySelector("#phone-error").innerHTML = 'Telefoonnummer is onjuist.';
+                //     document.querySelector("#phone-error").style.display = 'block';
+                //     document.querySelector("#phone").classList.add('is-invalid');
+                //     is_required = true;
+                // }
+                // if (!is_required) {
                     step3.forEach(step3 => {
                         step3.style.display = 'none';
                     });
@@ -94,7 +98,7 @@
                         step2.style.display = 'block';
                     });
                     current_step = 2;
-                }
+                // }
                 break;
             case 3:
                 step1.forEach(step1 => {
@@ -176,6 +180,11 @@
 					<p style = "font-size:12px">Emailadres: </p>
                         <input onkeyup="username_password()" type="email" name="email" id="email" class="form-control input-solid" placeholder="@lang('Emailadres')" value="{{ old('email') }}">
                     </div>
+                    <div class="form-group step3 enter_contest">
+					<p style = "font-size:12px">Telefoonnummer: </p>
+                        <input onkeypress="keypressing(this)" type="tel" name="phone" id="phone" class="form-control input-solid" placeholder="@lang('Telefoonnummer')" aria-describedby="phone-error" aria-invalid="false">
+                        <span id="phone-error" class="invalid-feedback">Telefoonnummer is onjuist.</span>
+                    </div>
                     <div class="form-group" style="display: none;">
                         <input type="text" name="username" id="username" class="form-control input-solid" placeholder="@lang('Username')" value="{{ old('username') }}">
                     </div>
@@ -196,11 +205,6 @@
 					<p style = "font-size:12px">Achternaam: </p>
                         <input onkeypress="keypressing(this)" type="text" name="last_name" id="last_name" class="form-control input-solid" placeholder="@lang('Achternaam')" aria-describedby="last_name-error" aria-invalid="false">
                         <span id="last_name-error" class="invalid-feedback">Wat is je achternaam?</span>
-                    </div>
-                    <div class="form-group step1 enter_contest">
-					<p style = "font-size:12px">Telefoonnummer: </p>
-                        <input onkeypress="keypressing(this)" type="tel" name="phone" id="phone" class="form-control input-solid" placeholder="@lang('Telefoonnummer')" aria-describedby="phone-error" aria-invalid="false">
-                        <span id="phone-error" class="invalid-feedback">Telefoonnummer is onjuist.</span>
                     </div>
                     <div class="form-group step1 enter_contest">
 					<p style = "font-size:12px">Geboortedatum: </p>

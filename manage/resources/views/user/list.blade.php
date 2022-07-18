@@ -76,12 +76,12 @@
                 <tr>
                     <th></th>
                     <th></th>
-                    <th class="min-width-80">@lang('Gebruikersnaam')</th>
+                    <!-- <th class="min-width-80">@lang('Gebruikersnaam')</th> -->
                     <th class="min-width-150">@lang('Volledige Naam')</th>
                     <th class="min-width-100">@lang('Emailadres')</th>
                     <th class="min-width-100">@lang('Telefoonnummer')</th>
                     <th class="min-width-80">@lang('Aangemaakt op')</th>
-                    <th class="min-width-80">@lang('Status')</th>
+                    <!-- <th class="min-width-80">@lang('Status')</th> -->
                     <th class="text-center min-width-150">@lang('Actie')</th>
                 </tr>
                 </thead>
