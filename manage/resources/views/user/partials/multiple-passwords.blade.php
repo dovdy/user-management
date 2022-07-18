@@ -22,8 +22,8 @@
 </div>
 
 <div class="btn btn-primary mt-2" id="" onclick="addPassword()">
-    <i class="fa fa-refresh"></i>
-    @lang('+ Add Password')
+    <i class="fas fa-plus mr-2"></i>
+    @lang('Add Password')
 </div><br>
 
 @if ($edit)

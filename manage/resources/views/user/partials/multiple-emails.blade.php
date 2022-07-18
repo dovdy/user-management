@@ -22,8 +22,8 @@
 </div>
 
 <div class="btn btn-primary mt-2" id="" onclick="addEmail()">
-    <i class="fa fa-refresh"></i>
-    @lang('+ Add Email')
+    <i class="fas fa-plus mr-2"></i>
+    @lang('Add Email')
 </div><br>
 
 @if ($edit)
