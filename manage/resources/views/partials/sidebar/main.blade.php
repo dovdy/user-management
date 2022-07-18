@@ -34,7 +34,7 @@
 
             @if (auth()->user()->role_id == 1)
             <li class="nav-item"> 
-                <a class="nav-link " href="export">
+                <a class="nav-link " href="{{ url('export') }}">
                     <i class="fas fa-share"></i>
                     <span>Export</span>
                 </a>
