@@ -13,6 +13,13 @@
 
 @include('partials.messages')
 
+<style>
+    svg.w-5 {
+        width: 25px;
+    }
+</style>
+
+
 <div class="card">
     <div class="card-body">
 
